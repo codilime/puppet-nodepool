@@ -1,8 +1,8 @@
 [loggers]
-keys=root,nodepool,requests,shade
+keys=root,nodepool,requests,shade,kazoo
 
 [handlers]
-keys=console,debug,normal
+keys=console,debug,normal,kazoo
 
 [formatters]
 keys=simple
@@ -26,6 +26,11 @@ level=DEBUG
 handlers=debug,normal
 qualname=gear
 
+[logger_kazoo]
+level=DEBUG
+handlers=debug,normal
+qualname=kazoo
+
 [logger_nodepool]
 level=DEBUG
 handlers=debug,normal
@@ -42,6 +47,12 @@ level=DEBUG
 class=logging.handlers.TimedRotatingFileHandler
 formatter=simple
 args=('/var/log/nodepool/launcher-debug.log', 'H', 8, 30,)
+
+[handler_kazoo]
+level=DEBUG
+class=logging.handlers.TimedRotatingFileHandler
+formatter=simple
+args=('/var/log/nodepool/nodepool-kazoo.log', 'H', 8, 30,)
 
 [handler_normal]
 level=INFO
